@@ -1,0 +1,9 @@
+patches/*
+logfile
+log/*
+*~
+*.orig
+*.o
+*.swp
+*.rej
+

@@ -1,0 +1,27 @@
+classes
+	sdcard_image.bbclass
+		Should use the correct CYLINDERS etc. for at91 BOOT ROM
+
+conf/machine
+	Add machines
+
+recipes-bsp
+	formfactor	OK
+	u-boot		Add support (multiple machines)
+	at91bootstrap	Add support (multiple machines)
+
+recipes-core
+	netbase		Add configuration file/done
+	other boards	To Do
+	owl driver	To Do
+
+recipes-graphics
+	xorg-xserver	Add xorg-conf
+
+recipes-kernel
+	linux
+		linux
+			<board>
+				logo_linux_clut224.ppm
+			For each board
+

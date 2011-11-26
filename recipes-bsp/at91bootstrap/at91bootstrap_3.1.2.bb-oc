@@ -1,0 +1,27 @@
+require at91bootstrap.inc
+
+LIC_FILES_CHKSUM = "file://README;md5=fb7a7e60aceaa99c529b6c667dfcf474"
+
+COMPATIBLE_MACHINE = "at91sam9g35ek"
+
+SRC_URI = "ftp://${AT91_MIRROR}/pub/buildroot/at91bootstrap-${PV}.tar.bz2"
+
+S = "${WORKDIR}/at91bootstrap-${PV}"
+
+do_compile () {
+	unset LDFLAGS
+	unset CFLAGS
+	unset CPPFLAGS
+	oe_runmake distclean
+	oe_runmake ${XLOAD_MACHINE}
+	oe_runmake
+}
+
+do_install () {
+	install -d ${D}/boot
+	install at91bootstrap.bin ${D}/boot/at91bootstrap.bin
+}
+
+FILES_${PN} = "/boot"
+
+PACKAGE_ARCH = "${MACHINE_ARCH}"
