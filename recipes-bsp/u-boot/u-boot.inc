@@ -33,11 +33,10 @@ do_compile () {
 			mkdir -p binaries/${board}
 			oe_runmake O=binaries/${board} distclean
 			oe_runmake O=binaries/${board} ${board}_config
-			cp	${S}/binaries/${board}/.config
 			oe_runmake O=binaries/${board} all
 		fi
 	done
-	oe_runmake tools env
+#	oe_runmake tools env
 }
 
 do_install () {
