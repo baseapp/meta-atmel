@@ -1,49 +1,51 @@
-PR = "r2"
-require u-boot_r2.inc
-
-¤ Bad right now, but we will update
+DESCRIPTION = "U-boot for the AT91 Series" 
+HOMEPAGE = "www.linux4sam.org"
+LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM_pn-${PN} = "file://COPYING;md5=4c6cde5df68eff615d36789dc18edd3b"
 
-DEFAULT_PREFERENCE = "-1"
-COMPATIBLE_MACHINE = "
-	at91sam9260ek|\
-	at91sam9261ek|\
-	at91sam9263ek|\
-	at91sam9g10ek|\
-	at91sam9g15ek|\
-	at91sam9g20ek|\
-	at91sam9g20ek_2mmc|\
-	at91sam9g25ek|\
-	at91sam9g35ek|\
-	at91sam9g45ek|\
-	at91sam9g45ekes|\
-	at91sam9m10ekes|\
-	at91sam9m10g45ek|\
-	at91sam9rlek|\
-	at91sam9x25ek|\
-	at91sam9x35ek|\
-	at91sam9xeek\
-	"
+PR = "r0"
+
+PV = "2009.11"
+
+require u-boot.inc
+
+# To build u-boot for your machine, provide the following lines in your machine
+# config, replacing the assignments as appropriate for your machine.
+# UBOOT_MACHINES = "at91sam9g35ek at91sam9g35ek_dataflash at91sam9g35eknandflash"
+#?UBOOT_ENTRYPOINT = "0x80008000"
+#?UBOOT_LOADADDRESS = "0x80008000"
+
+COMPATIBLE_MACHINE	 = "at91sam9260ek|at91sam9xeek|at91sam9g20ek|at91sam9g20ek_2mmc|		XX1"
+COMPATIBLE_MACHINE	+= "|at91sam9261ek|at91sam9g10ek|						XX2"
+COMPATIBLE_MACHINE	+= "|at91sam9263ek|								XX3"
+COMPATIBLE_MACHINE	+= "|at91sam9g45ek|at91sam9g45ekes|at91sam9m10ekes|at91sam9m10g45ek|		XX4"
+# COMPATIBLE_MACHINE	+= "|at91sam9g15ek|at91sam9g25ek|at91sam9g35ek|at91sam9x25ek|at91sam9x35ek|	XX5"
+COMPATIBLE_MACHINE	+= "|at91sam9rlek"
 
 DEFAULT_PREFERENCE			= "-1"
 DEFAULT_PREFERENCE_at91sam9260ek	= "2"
 DEFAULT_PREFERENCE_at91sam9261ek	= "2"
 DEFAULT_PREFERENCE_at91sam9263ek	= "2"
 DEFAULT_PREFERENCE_at91sam9g10ek	= "2"
-DEFAULT_PREFERENCE_at91sam9g15ek	= "2"
 DEFAULT_PREFERENCE_at91sam9g20ek	= "2"
 DEFAULT_PREFERENCE_at91sam9g20ek_2mmc	= "2"
-DEFAULT_PREFERENCE_at91sam9g25ek	= "2"
-DEFAULT_PREFERENCE_at91sam9g35ek	= "2"
 DEFAULT_PREFERENCE_at91sam9g45ek	= "3"
 DEFAULT_PREFERENCE_at91sam9g45ekes	= "3"
 DEFAULT_PREFERENCE_at91sam9m10ekes	= "3"
 DEFAULT_PREFERENCE_at91sam9m10g45ek	= "3"
 DEFAULT_PREFERENCE_at91sam9rlek		= "2"
 DEFAULT_PREFERENCE_at91sam9xeek		= "2"
-DEFAULT_PREFERENCE_at91sam9x25ek	= "2"
-DEFAULT_PREFERENCE_at91sam9x35ek	= "2"
+# DEFAULT_PREFERENCE_at91sam9g15ek	= "2"
+# DEFAULT_PREFERENCE_at91sam9g25ek	= "2"
+# DEFAULT_PREFERENCE_at91sam9g35ek	= "2"
+# DEFAULT_PREFERENCE_at91sam9x25ek	= "2"
+# DEFAULT_PREFERENCE_at91sam9x35ek	= "2"
 
+TARGET_LDFLAGS = ""
+
+inherit base
+
+S = "${WORKDIR}/u-boot-${PV}"
 
 SRC_URI = "ftp://ftp.denx.de/pub/u-boot/u-boot-${PV}.tar.bz2 "
 
@@ -74,9 +76,7 @@ SRC_URI_append_at91 = "\
 	file://at91/0026-Revert-bad-sam9m10g45_devices.c-patch.patch \
 	"
 
-TARGET_LDFLAGS = ""
-
-inherit base
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI[md5sum] = "d94700614225f53c853dfe714eb5fa47"
 SRC_URI[sha256sum] = "066615314fc90a314823ac975ca2a525a51fdad41802f4088a3a21ce073e8de6"
