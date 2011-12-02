@@ -4,7 +4,7 @@ require conf/machine/include/tune-arm926ejs.inc
 
 MACHINE_FEATURES = "kernel26 serial usbgadget vfat mmc alsa ext2"
 
-# ROOT FIle System
+# *** Root File System ********************************************************
 # IMAGE_FSTYPES ?= "jffs2 tar.bz2 ubi"
 IMAGE_FSTYPES ?= "jffs2 tar.bz2"
 
@@ -30,27 +30,23 @@ MKUBIFS_ARGS = "-m 2048 -e 129024 -c 1996"
 UBINIZE_ARGS = "-m 2048 -p 128KiB -s 512"
 
 
-# KERNEL
-PREFERRED_PROVIDER_virtual/kernel = "linux"
-# PREFERRED_PROVIDER_virtual/kernel = "linux-2.6.39"
+# *** KERNEL ******************************************************************
 # Increase this everytime you change something in the kernel
-MACHINE_KERNEL_PR = "r0"
 KERNEL_IMAGETYPE = "uImage"
 
 
-EXTRA_IMAGEDEPENDS += "u-boot at91bootstrap"
-
-PREFERRED_PROVIDER_virtual/bootloader = "u-boot"
-UBOOT_ARCH = "arm"
-# UBOOT_ENTRYPOINT = "0x80008000"
-# UBOOT_LOADADDRESS = "0x80008000"
-
-PREFERRED_VERSION_at91bootstrap = "3.1.2"
-
+# Boot parameters *************************************************************
 SERIAL_CONSOLE ?= "115200 ttyS0"
 USE_VT = "0"
 
 
+# **** U-Boot *****************************************************************
+EXTRA_IMAGEDEPENDS += "u-boot"
+UBOOT_ARCH = "arm"
+# UBOOT_ENTRYPOINT = "0x80008000"
+# UBOOT_LOADADDRESS = "0x80008000"
 
 
+# *** at91bootstrap ***********************************************************
+EXTRA_IMAGEDEPENDS += "at91bootstrap"
 
