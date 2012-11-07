@@ -1,6 +1,12 @@
 DESCRIPTION = "Linux kernel for AT91 processors"
 PR = "r0"
 
+PROVIDES += "virtual/kernel"
+
+PACKAGES_DYNAMIC += "kernel-module-*"
+PACKAGES_DYNAMIC += "kernel-image-*"
+
+
 # Specify the commandline for your device
 # Used by "linux.inc", so it must be before the include of that file.
 # Should really be in machine description.
