@@ -1,8 +1,6 @@
 DESCRIPTION = "Linux kernel for AT91 processors"
 PR = "r0"
 
-PROVIDES += "virtual/kernel"
-
 PACKAGES_DYNAMIC += "kernel-module-*"
 PACKAGES_DYNAMIC += "kernel-image-*"
 
@@ -30,10 +28,10 @@ SRC_URI = " \
 	${FAST_MIRROR}/linux/kernel/v2.6/linux-${PV}.tar.bz2;name=kernel \
 	ftp://ftp.emagii.com/pub/linux/kernel/v2.6/${AT91_PATCH}.tar.bz2;name=at91exp2 \
 	file://defconfig \
+	file://wvga/logo_linux_clut224.ppm \
 	"
 
 SRC_URI_append_at91sam9g35ek = " \
-	file://wvga/logo_linux_clut224.ppm \
 	"
 
 # do_configure_prepend() {
@@ -50,7 +48,7 @@ do_apply_at91exp() {
 		echo	"Applying $p"					>>	${WORKDIR}/patches.txt
 		cat ${WORKDIR}/2.6.39-at91-exp2/$p	| patch -p1	| tee -a	${WORKDIR}/patches2.txt
 	done
-	mv	${WORKDIR}/wvga/logo_linux_clut224.ppm	${WORKDIR}/logo_linux_clut224.ppm
+#	mv	${WORKDIR}/wvga/logo_linux_clut224.ppm	${WORKDIR}/logo_linux_clut224.ppm
 }
 
 addtask apply_at91exp after do_unpack before do_patch
