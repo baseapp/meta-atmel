@@ -19,7 +19,7 @@ COMPATIBLE_MACHINE	 = "at91sam9260ek|at91sam9xeek|at91sam9g20ek|at91sam9g20ek_2m
 COMPATIBLE_MACHINE	+= "|at91sam9261ek|at91sam9g10ek|							XX2"
 COMPATIBLE_MACHINE	+= "|at91sam9263ek|									XX3"
 COMPATIBLE_MACHINE	+= "|at91sam9g45ek|at91sam9g45ekes|at91sam9m10ekes|at91sam9m10g45ek|			XX4"
-COMPATIBLE_MACHINE	+= "|at91sam9g15ek|at91sam9g25ek|at91sam9g35ek|at91sam9x25ek|at91sam9x35ek|ariag25	XX5"
+COMPATIBLE_MACHINE	+= "|at91sam9g15ek|at91sam9g25ek|at91sam9g35ek|at91sam9x25ek|at91sam9x35ek|ariag25|	XX5"
 COMPATIBLE_MACHINE	+= "|at91sam9rlek"
 
 DEFAULT_PREFERENCE			= "-1"
