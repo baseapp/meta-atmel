@@ -25,8 +25,13 @@ Nov, 2012
 ---------
 
 Layer updated, for use with aria-g25 http://www.acmesystems.it/aria.
-Should also work with at91sam9g25. To use layer with yocto, do 
+Used yocto's kernel template to make meta-kernel afresh. Should also
+work with other at91sam9g25 boards. 
+To use layer with yocto, do 
 
  `git checkout yocto`
 
 Kernel version is 2.6.39.
+
+Also provides at91bootstrap/u-boot, but http://www.acmesystems.it/ariaboot 
+is tested.
